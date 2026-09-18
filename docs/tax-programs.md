@@ -4,30 +4,41 @@ This document provides comprehensive coverage of Australian tax programs modeled
 
 ## Personal Income Tax
 
-### Tax Brackets and Rates (2024-25)
+### Tax Brackets and Rates
 
-Australia uses a progressive income tax system with the following brackets:
+Australia uses a progressive income tax system. Resident rates:
 
-| Taxable Income | Tax Rate | Description |
-|----------------|----------|-------------|
-| $0 - $18,200 | 0% | Tax-free threshold |
-| $18,201 - $45,000 | 19% | Low income bracket |
-| $45,001 - $135,000 | 30% | Middle income bracket (Stage 3 cuts) |
-| $135,001 - $190,000 | 37% | High income bracket |
-| $190,001+ | 45% | Top marginal rate |
+| Taxable Income | 2024-25 and 2025-26 | 2026-27 |
+|----------------|---------------------|---------|
+| $0 - $18,200 | 0% | 0% |
+| $18,201 - $45,000 | 16% | 15% |
+| $45,001 - $135,000 | 30% | 30% |
+| $135,001 - $190,000 | 37% | 37% |
+| $190,001+ | 45% | 45% |
 
-**Reference**: [ATO Individual Income Tax Rates](https://www.ato.gov.au/tax-rates-and-codes/individual-income-tax-rates)
+**Reference**: [ATO Tax rates – Australian residents](https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents)
 
 ### Implementation
 
+The rates are a marginal rate scale, applied to taxable income with
+`parameters(period).gov.ato.income_tax.rates.calc(taxable_income)`.
+
 ```yaml
 # parameters/gov/ato/income_tax/rates.yaml
-rates:
-  bracket_1: 0.0    # Tax-free threshold
-  bracket_2: 0.19   # 19% rate
-  bracket_3: 0.30   # 30% rate (Stage 3)
-  bracket_4: 0.37   # 37% rate
-  bracket_5: 0.45   # 45% rate
+brackets:
+  - threshold:
+      values:
+        2022-07-01: 18_200
+    rate:
+      values:
+        2022-07-01: 0.19
+        2024-07-01: 0.16
+        2026-07-01: 0.15
+  # ...
+metadata:
+  type: marginal_rate
+  threshold_unit: currency-AUD
+  rate_unit: /1
 ```
 
 ## Medicare Levy

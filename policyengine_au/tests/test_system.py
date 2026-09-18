@@ -51,9 +51,10 @@ def test_parameters_loaded():
     period = "2024-07-01"
     p_2024 = parameters(period)
 
-    # Test income tax parameters
-    assert p_2024.gov.ato.income_tax.thresholds.thresholds.tax_free_threshold == 18_200
-    assert p_2024.gov.ato.income_tax.rates.rates.bracket_2 == 0.19
+    # Test income tax parameters (2024-25, after Stage 3)
+    income_tax_rates = p_2024.gov.ato.income_tax.rates
+    assert income_tax_rates.thresholds[1] == 18_200
+    assert income_tax_rates.rates[1] == 0.16
 
     # Test Medicare levy
     assert p_2024.gov.ato.medicare.levy_rate == 0.02

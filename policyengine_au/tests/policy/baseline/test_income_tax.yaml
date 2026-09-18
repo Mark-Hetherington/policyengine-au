@@ -77,5 +77,5 @@
         employment_income: 150_000
   output:
     taxable_income: 150_000
-    income_tax: 37_642  # With Stage 3 tax cuts
+    income_tax: 36_838  # 2024-25: $31,288 + 37c over $135,000
     medicare_levy: 3_000  # 2% of $150,000

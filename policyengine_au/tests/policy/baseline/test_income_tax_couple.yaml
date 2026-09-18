@@ -1,0 +1,159 @@
+# Two-person households, checking each member's income tax separately.
+# A period of N reads parameters at N-01-01, so period 2025 is 2024-25 law.
+# 2024-25 and 2025-26 figures: ATO Simple tax calculator, resident full year
+# https://www.ato.gov.au/calculators-and-tools/tax-return-simple-tax-calculator
+# 2026-27 figures (not yet in the calculator): ATO resident tax rate table
+# https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
+
+- name: 2024-25 couple, tax-free threshold and top bracket
+  period: 2025
+  input:
+    people:
+      person_1:
+        employment_income: 18_200
+      person_2:
+        employment_income: 250_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 0
+    person_2:
+      income_tax: 78_638
+
+- name: 2024-25 couple, top of 16% band and top of 37% band
+  period: 2025
+  input:
+    people:
+      person_1:
+        employment_income: 45_000
+      person_2:
+        employment_income: 190_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 4_288
+    person_2:
+      income_tax: 51_638
+
+- name: 2024-25 couple, 30% band and 37% band
+  period: 2025
+  input:
+    people:
+      person_1:
+        employment_income: 50_000
+      person_2:
+        employment_income: 150_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 5_788
+    person_2:
+      income_tax: 36_838
+
+- name: 2025-26 couple, tax-free threshold and top bracket
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 18_200
+      person_2:
+        employment_income: 250_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 0
+    person_2:
+      income_tax: 78_638
+
+- name: 2025-26 couple, top of 16% band and top of 37% band
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 45_000
+      person_2:
+        employment_income: 190_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 4_288
+    person_2:
+      income_tax: 51_638
+
+- name: 2025-26 couple, 30% band and 37% band
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 50_000
+      person_2:
+        employment_income: 150_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 5_788
+    person_2:
+      income_tax: 36_838
+
+- name: 2026-27 couple, tax-free threshold and top bracket
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 18_200
+      person_2:
+        employment_income: 250_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 0
+    person_2:
+      income_tax: 78_370  # $51,370 + 45c over $190,000
+
+- name: 2026-27 couple, top of 15% band and top of 37% band
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 45_000
+      person_2:
+        employment_income: 190_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 4_020  # 15c over $18,200
+    person_2:
+      income_tax: 51_370
+
+- name: 2026-27 couple, 30% band and 37% band
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 50_000
+      person_2:
+        employment_income: 150_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      income_tax: 5_520  # $4,020 + 30c over $45,000
+    person_2:
+      income_tax: 36_570  # $31,020 + 37c over $135,000
