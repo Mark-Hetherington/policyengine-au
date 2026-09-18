@@ -1,0 +1,1 @@
+Medicare levy now works for households with more than one person, and its low income thresholds are corrected: each value was dated one year late. Added 2024-25 and 2025-26 thresholds, and the 10% phase-in rate as a parameter.

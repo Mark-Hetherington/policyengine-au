@@ -8,39 +8,24 @@ class medicare_levy(Variable):
     entity = Person
     definition_period = YEAR
     label = "Medicare levy"
-    documentation = "Medicare levy based on taxable income and family circumstances"
-    reference = "https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy"
+    documentation = (
+        "Medicare levy on taxable income, with the low income reduction for "
+        "individuals (Medicare Levy Act 1986 s 7). The family income "
+        "reduction (s 8) and the thresholds for people entitled to the "
+        "seniors and pensioners tax offset are not yet modelled."
+    )
+    reference = "https://www.legislation.gov.au/C2004A03351/latest"
     unit = AUD
 
     def formula(person, period, parameters):
         taxable_income = person("taxable_income", period)
-        p_medicare = parameters(period).gov.ato.medicare
-
-        # Get basic levy rate (2%)
-        levy_rate = p_medicare.levy_rate
-
-        # Get low income thresholds
-        thresholds = p_medicare.low_income_thresholds
-
-        # For simplicity, assume single person initially
-        # TODO: Add family status detection
-        is_single = True
-
-        if is_single:
-            no_levy_threshold = thresholds.singles.no_levy_threshold
-            full_levy_threshold = thresholds.singles.full_levy_threshold
-        else:
-            # Family thresholds would be used here
-            no_levy_threshold = thresholds.families.no_levy_threshold
-            full_levy_threshold = thresholds.families.full_levy_threshold
-
-        # Calculate Medicare levy
-        if taxable_income <= no_levy_threshold:
-            # No Medicare levy for low income
-            return 0
-        elif taxable_income <= full_levy_threshold:
-            # Shade-in range: 10% of income above threshold
-            return (taxable_income - no_levy_threshold) * 0.10
-        else:
-            # Full Medicare levy (2% of taxable income)
-            return taxable_income * levy_rate
+        p = parameters(period).gov.ato.medicare
+        thresholds = p.low_income_thresholds.singles
+        full_levy = taxable_income * p.levy_rate
+        excess = max_(taxable_income - thresholds.no_levy_threshold, 0)
+        phase_in_levy = min_(full_levy, excess * p.phase_in_rate)
+        return where(
+            taxable_income <= thresholds.full_levy_threshold,
+            phase_in_levy,
+            full_levy,
+        )

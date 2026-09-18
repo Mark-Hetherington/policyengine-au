@@ -1,0 +1,75 @@
+# Medicare levy for individuals, Medicare Levy Act 1986 ss 6-7.
+# A period of N reads parameters at N-01-01, so period 2026 is 2025-26 law.
+# Thresholds: 2025-26 lower $28,011, phase-in limit $35,013;
+# 2024-25 lower $27,222, phase-in limit $34,027;
+# 2023-24 lower $26,000, phase-in limit $32,500.
+
+- name: 2025-26 single at the low income threshold pays no levy
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 28_011
+  output:
+    medicare_levy: 0
+
+- name: 2025-26 single in the phase-in range (ATO worked example)
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 29_000
+  output:
+    medicare_levy: 98.90  # 10% of $989
+
+- name: 2025-26 single at the phase-in limit
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 35_013
+  output:
+    medicare_levy: 700.20  # 10% of $7,002, below 2% of $35,013
+
+- name: 2025-26 single $1 above the phase-in limit pays the full levy
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 35_014
+  output:
+    medicare_levy: 700.28  # 2% of $35,014
+
+- name: 2024-25 single at the low income threshold pays no levy
+  period: 2025
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 27_222
+  output:
+    medicare_levy: 0
+
+- name: 2024-25 single in the phase-in range
+  period: 2025
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 30_000
+  output:
+    medicare_levy: 277.80  # 10% of $2,778
+
+- name: 2023-24 single in the phase-in range
+  period: 2024
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 30_000
+  output:
+    medicare_levy: 400  # 10% of $4,000
