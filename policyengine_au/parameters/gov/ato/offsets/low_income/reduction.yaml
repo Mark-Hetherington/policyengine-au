@@ -1,0 +1,31 @@
+description: The low income tax offset is reduced at these marginal rates of taxable income.
+brackets:
+  - threshold:
+      values:
+        2020-07-01: 0
+    rate:
+      values:
+        2020-07-01: 0
+  - threshold:
+      values:
+        2020-07-01: 37_500
+    rate:
+      values:
+        2020-07-01: 0.05
+  - threshold:
+      values:
+        2020-07-01: 45_000
+    rate:
+      values:
+        2020-07-01: 0.015
+metadata:
+  type: marginal_rate
+  threshold_unit: currency-AUD
+  rate_unit: /1
+  threshold_period: year
+  label: Low income tax offset reduction
+  reference:
+    - title: Income Tax Assessment Act 1997, s 61-115(1)
+      href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/2
+    - title: ATO, Low income tax offset
+      href: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset

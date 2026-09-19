@@ -1,0 +1,93 @@
+# Low income tax offset, Income Tax Assessment Act 1997 s 61-115, and
+# income tax payable after it (s 4-10(3)).
+# A period of N reads parameters at N-01-01, so period 2026 is 2025-26 law.
+# LITO: $700 to $37,500; less 5% of the excess to $45,000 ($325); then less
+# 1.5% of the excess over $45,000, reaching nil at $66,667.
+
+- name: 2025-26 LITO in full at the first reduction threshold
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 37_500
+  output:
+    low_income_tax_offset: 700
+    income_tax_payable: 2_388  # $3,088 - $700
+
+- name: 2025-26 LITO at the second reduction threshold
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 45_000
+  output:
+    low_income_tax_offset: 325  # $700 - 5% of $7,500
+    income_tax_payable: 3_963  # $4,288 - $325
+
+- name: 2025-26 LITO in the second reduction band
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 50_000
+  output:
+    low_income_tax_offset: 250  # $325 - 1.5% of $5,000
+    income_tax_payable: 5_538  # $5,788 - $250
+
+- name: 2025-26 LITO reaches nil at $66,667
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 66_667
+  output:
+    low_income_tax_offset: 0
+
+- name: 2025-26 LITO is non-refundable
+  period: 2026
+  input:
+    people:
+      person_1:
+        employment_income: 20_000
+  output:
+    income_tax: 288
+    low_income_tax_offset: 700
+    income_tax_payable: 0
+
+- name: 2024-25 couple, each with their own LITO
+  period: 2025
+  input:
+    people:
+      person_1:
+        employment_income: 30_000
+      person_2:
+        employment_income: 45_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      low_income_tax_offset: 700
+      income_tax_payable: 1_188  # $1,888 - $700
+    person_2:
+      low_income_tax_offset: 325
+      income_tax_payable: 3_963  # $4,288 - $325
+
+- name: 2026-27 couple, each with their own LITO
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 30_000
+      person_2:
+        employment_income: 50_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      low_income_tax_offset: 700
+      income_tax_payable: 1_070  # $1,770 - $700
+    person_2:
+      low_income_tax_offset: 250
+      income_tax_payable: 5_270  # $5,520 - $250

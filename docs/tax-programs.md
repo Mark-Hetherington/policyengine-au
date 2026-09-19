@@ -41,6 +41,22 @@ metadata:
   rate_unit: /1
 ```
 
+## Low Income Tax Offset
+
+A non-refundable offset for residents, reducing income tax (not the Medicare
+levy) to no lower than zero:
+
+| Taxable Income | Offset |
+|----------------|--------|
+| $0 - $37,500 | $700 |
+| $37,501 - $45,000 | $700 less 5% of the excess over $37,500 |
+| $45,001 - $66,667 | $325 less 1.5% of the excess over $45,000 |
+
+`income_tax_payable` is `income_tax` less `income_tax_offsets`, floored at
+zero.
+
+**Reference**: [ATO Low income tax offset](https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset)
+
 ## Medicare Levy
 
 ### Standard Levy

@@ -1,0 +1,12 @@
+description: Maximum low income tax offset, paid in full at or below the first reduction threshold.
+values:
+  2020-07-01: 700
+metadata:
+  unit: currency-AUD
+  period: year
+  label: Low income tax offset maximum
+  reference:
+    - title: Income Tax Assessment Act 1997, s 61-115(1)
+      href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/2
+    - title: ATO, Low income tax offset
+      href: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset
