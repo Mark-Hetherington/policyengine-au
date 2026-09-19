@@ -1,0 +1,9 @@
+description: Maximum Medicare levy as a share of taxable income above the low income threshold, while taxable income is at or below the phase-in limit
+values:
+  2021-07-01: 0.1
+metadata:
+  unit: /1
+  label: Medicare levy phase-in rate
+  reference:
+    - title: Medicare Levy Act 1986, s 7(2)
+      href: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/pdf

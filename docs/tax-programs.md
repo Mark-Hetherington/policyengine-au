@@ -60,13 +60,19 @@ zero.
 ## Medicare Levy
 
 ### Standard Levy
-- **Rate**: 2% of taxable income
+- **Rate**: 2% of taxable income (Medicare Levy Act 1986 s 6)
 - **Purpose**: Funds Australia's public health system
 
-### Low Income Thresholds (2024-25)
-- **Singles**: No levy below $26,000; shade-in to $32,500
-- **Families**: No levy below $43,846; additional $4,027 per child
-- **Seniors/Pensioners**: Higher thresholds at $42,000/$52,500
+### Low Income Thresholds (2025-26)
+- **Singles**: No levy at or below $28,011; between $28,011 and $35,013 the
+  levy is capped at 10% of income above $28,011 (s 7)
+- **Families**: No levy at or below $47,238 family income, plus $4,338 per
+  dependent child (s 8; parameters only, not yet applied)
+- **Seniors and pensioners** entitled to SAPTO: $44,268 / $55,335
+  (parameters only, not yet applied)
+
+2026-27 thresholds are not yet legislated, so 2026-27 simulations use the
+2025-26 thresholds.
 
 ### Medicare Levy Surcharge
 Additional levy for high-income earners without private health insurance:

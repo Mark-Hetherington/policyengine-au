@@ -1,0 +1,63 @@
+# Two-person households, checking each member's Medicare levy separately.
+# A period of N reads parameters at N-01-01, so period 2026 is 2025-26 law.
+# Every couple's combined income is above the family upper threshold
+# ($59,047 in 2025-26, $57,383 in 2024-25), so the s 8 family reduction
+# gives nothing and each levy follows s 7 alone. Both are 45, so neither
+# is entitled to the seniors and pensioners tax offset.
+
+- name: 2025-26 couple, one in the phase-in range and one paying the full levy
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 29_000
+      person_2:
+        age: 45
+        employment_income: 80_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      medicare_levy: 98.90
+    person_2:
+      medicare_levy: 1_600
+
+- name: 2025-26 couple, both in the phase-in range
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 30_000
+      person_2:
+        age: 45
+        employment_income: 32_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      medicare_levy: 198.90  # 10% of $1,989
+    person_2:
+      medicare_levy: 398.90  # 10% of $3,989
+
+- name: 2024-25 couple, one in the phase-in range and one paying the full levy
+  period: 2025
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 30_000
+      person_2:
+        age: 45
+        employment_income: 70_000
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      medicare_levy: 277.80
+    person_2:
+      medicare_levy: 1_400

@@ -1,53 +1,89 @@
 description: Medicare levy low income thresholds for reduction or exemption
-reference:
-  - title: Medicare levy reduction for low-income earners
-    href: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction-for-low-income-earners
 metadata:
   unit: currency-AUD
   label: Medicare levy low income thresholds
   period: year
+  reference:
+    - title: Medicare Levy Act 1986, Compilation No. 48 (2021-22 thresholds), ss 3(1), 8(5)
+      href: https://www.legislation.gov.au/C2004A03351/2022-04-01/2022-04-01/text/original/pdf
+    - title: Medicare Levy Act 1986, Compilation No. 49 (2022-23 thresholds), ss 3(1), 8(5)
+      href: https://www.legislation.gov.au/C2004A03351/2023-06-24/2023-06-24/text/original/pdf
+    - title: Medicare Levy Act 1986, Compilation No. 50 (2023-24 thresholds), ss 3(1), 8(5)
+      href: https://www.legislation.gov.au/C2004A03351/2024-03-06/2024-03-06/text/original/pdf
+    - title: Medicare Levy Act 1986, Compilation No. 52 (2024-25 thresholds), ss 3(1), 8(5)
+      href: https://www.legislation.gov.au/C2004A03351/2025-03-28/2025-03-28/text/original/pdf
+    - title: Medicare Levy Act 1986, Compilation No. 53 (2025-26 thresholds), ss 3(1), 8(5)
+      href: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/pdf
+    - title: ATO, Medicare levy reduction for low-income earners (2025-26)
+      href: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
 singles:
   no_levy_threshold:
-    description: Income below which no Medicare levy is payable for singles
+    description: Taxable income at or below which no Medicare levy is payable (threshold amount)
     values:
-      2022-07-01: 23_365
-      2023-07-01: 24_276
-      2024-07-01: 26_000
+      2021-07-01: 23_365
+      2022-07-01: 24_276
+      2023-07-01: 26_000
+      2024-07-01: 27_222
+      2025-07-01: 28_011
   full_levy_threshold:
-    description: Income above which full Medicare levy applies for singles
+    description: Taxable income above which the full Medicare levy applies (phase-in limit)
     values:
-      2022-07-01: 29_207
-      2023-07-01: 30_345
-      2024-07-01: 32_500
+      2021-07-01: 29_206
+      2022-07-01: 30_345
+      2023-07-01: 32_500
+      2024-07-01: 34_027
+      2025-07-01: 35_013
 families:
   no_levy_threshold:
-    description: Family income below which no Medicare levy is payable
+    description: Family income at or below which no Medicare levy is payable, before the per-child increase (family income threshold)
     values:
-      2022-07-01: 39_402
-      2023-07-01: 40_939
-      2024-07-01: 43_846
+      2021-07-01: 39_402
+      2022-07-01: 40_939
+      2023-07-01: 43_846
+      2024-07-01: 45_907
+      2025-07-01: 47_238
   full_levy_threshold:
-    description: Family income above which full Medicare levy applies
+    description: Family income above which no family reduction applies, before the per-child increase. Not legislated directly; it is where the s 8(2) reduction reaches zero, 1.25 times the family income threshold rounded down.
+    metadata:
+      reference:
+        - title: ATO, myTax 2022 Medicare levy reduction or exemption, worksheet 2
+          href: https://www.ato.gov.au/individuals-and-families/your-tax-return/instructions-to-complete-your-tax-return/mytax-instructions/2022/medicare-and-private-health-insurance/medicare-levy-reduction-or-exemption
+        - title: ATO, myTax 2023 Medicare levy reduction or exemption, worksheet 2
+          href: https://www.ato.gov.au/individuals-and-families/your-tax-return/instructions-to-complete-your-tax-return/mytax-instructions/2023/medicare-and-private-health-insurance/medicare-levy-reduction-or-exemption
+        - title: ATO, myTax 2024 Medicare levy reduction or exemption, worksheet 2
+          href: https://www.ato.gov.au/individuals-and-families/your-tax-return/instructions-to-complete-your-tax-return/mytax-instructions/2024/medicare-and-private-health-insurance/medicare-levy-reduction-or-exemption
+        - title: ATO, myTax 2025 Medicare levy reduction or exemption, worksheet 2
+          href: https://www.ato.gov.au/individuals-and-families/your-tax-return/instructions-to-complete-your-tax-return/mytax-instructions/2025/medicare-and-private-health-insurance/medicare-levy-reduction-or-exemption
+        - title: ATO, Medicare levy reduction – family taxable income (2025-26)
+          href: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
     values:
-      2022-07-01: 49_252
-      2023-07-01: 51_174
-      2024-07-01: 54_807
+      2021-07-01: 49_252
+      2022-07-01: 51_173
+      2023-07-01: 54_807
+      2024-07-01: 57_383
+      2025-07-01: 59_047
   additional_child_or_student:
-    description: Additional threshold per dependent child or student
+    description: Increase in the family income threshold for each dependent child or student
     values:
-      2022-07-01: 3_619
-      2023-07-01: 3_760
-      2024-07-01: 4_027
+      2021-07-01: 3_619
+      2022-07-01: 3_760
+      2023-07-01: 4_027
+      2024-07-01: 4_216
+      2025-07-01: 4_338
 seniors_pensioners:
   no_levy_threshold:
-    description: Income below which no Medicare levy for seniors and pensioners
+    description: Taxable income at or below which no Medicare levy is payable, for a person entitled to the seniors and pensioners tax offset
     values:
-      2022-07-01: 36_925
-      2023-07-01: 38_365
-      2024-07-01: 42_000
+      2021-07-01: 36_925
+      2022-07-01: 38_365
+      2023-07-01: 41_089
+      2024-07-01: 43_020
+      2025-07-01: 44_268
   full_levy_threshold:
-    description: Income above which full Medicare levy for seniors and pensioners
+    description: Taxable income above which the full Medicare levy applies, for a person entitled to the seniors and pensioners tax offset
     values:
-      2022-07-01: 46_156
-      2023-07-01: 47_956
-      2024-07-01: 52_500
+      2021-07-01: 46_156
+      2022-07-01: 47_956
+      2023-07-01: 51_361
+      2024-07-01: 53_775
+      2025-07-01: 55_335
