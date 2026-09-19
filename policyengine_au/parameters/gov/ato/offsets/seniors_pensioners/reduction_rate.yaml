@@ -1,0 +1,11 @@
+description: The seniors and pensioners tax offset is reduced by this amount for each dollar of rebate income above the rebate threshold.
+values:
+  2022-07-01: 0.125
+metadata:
+  unit: /1
+  label: SAPTO reduction rate
+  reference:
+    - title: Income Tax Assessment (1936 Act) Regulation 2015 (F2022C01160), regs 4, 9-11 (income years to 2025-26)
+      href: https://www.legislation.gov.au/F2015L01415/2022-12-09/2022-12-09/text/original/pdf
+    - title: Income Tax Assessment (1936 Act) Regulations 2025, regs 4, 9-11, 23 (income years from 2026-27)
+      href: https://www.legislation.gov.au/F2025L01060/2025-09-09/2025-09-09/text/original/pdf

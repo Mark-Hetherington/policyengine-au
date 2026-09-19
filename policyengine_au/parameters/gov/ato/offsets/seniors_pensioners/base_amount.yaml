@@ -1,0 +1,22 @@
+description: Maximum seniors and pensioners tax offset (base rebate amount) by class of individual.
+metadata:
+  unit: currency-AUD
+  period: year
+  label: SAPTO base rebate amount
+  reference:
+    - title: Income Tax Assessment (1936 Act) Regulation 2015 (F2022C01160), regs 4, 9-11 (income years to 2025-26)
+      href: https://www.legislation.gov.au/F2015L01415/2022-12-09/2022-12-09/text/original/pdf
+    - title: Income Tax Assessment (1936 Act) Regulations 2025, regs 4, 9-11, 23 (income years from 2026-27)
+      href: https://www.legislation.gov.au/F2025L01060/2025-09-09/2025-09-09/text/original/pdf
+single:
+  description: Base rebate amount for an individual who is not a spouse of another individual.
+  values:
+    2022-07-01: 2_230
+partnered:
+  description: Base rebate amount for an individual who is a spouse of another individual.
+  values:
+    2022-07-01: 1_602
+illness_separated:
+  description: Base rebate amount for a member of an illness separated couple.
+  values:
+    2022-07-01: 2_040

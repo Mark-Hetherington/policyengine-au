@@ -14,4 +14,7 @@ class income_tax_offsets(Variable):
     )
     reference = "https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/1"
     unit = AUD
-    adds = ["low_income_tax_offset"]
+    adds = [
+        "low_income_tax_offset",
+        "seniors_and_pensioners_tax_offset",
+    ]

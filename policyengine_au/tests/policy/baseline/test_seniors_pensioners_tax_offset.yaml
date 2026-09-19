@@ -1,0 +1,316 @@
+# Seniors and pensioners tax offset (SAPTO): Income Tax Assessment Act 1936
+# s 160AAAA and Income Tax Assessment (1936 Act) Regulation 2015 / Regulations
+# 2025, regs 9-11. A period of N reads parameters at N-01-01, so period 2026
+# is 2025-26 law. Rebate income equals taxable income in every case here.
+# Couples need a tax unit with the spouse role marked.
+#
+# 2025-26 worked examples are from the ATO SAPTO page, and were checked in the
+# ATO beneficiary and SAPTO tax offset calculator:
+# https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/seniors-and-pensioners-tax-offset
+
+- name: 2025-26 José, single, shaded-out offset rounded up
+  period: 2026
+  input:
+    people:
+      jose:
+        age: 70
+        employment_income: 39_000
+  output:
+    sapto_rebate_threshold: 34_919
+    seniors_and_pensioners_tax_offset: 1_720  # $2,230 - 12.5% of $4,081
+
+- name: 2025-26 Marko, single, above the cut-out
+  period: 2026
+  input:
+    people:
+      marko:
+        age: 67
+        employment_income: 85_690
+  output:
+    sapto_eligible: false
+    seniors_and_pensioners_tax_offset: 0
+
+- name: 2025-26 Keith and Jean, spouse below Age Pension age
+  period: 2026
+  input:
+    people:
+      keith:
+        age: 70
+        employment_income: 33_650
+      jean:
+        age: 60
+        employment_income: 0
+    tax_units:
+      tax_unit:
+        primaries: [keith]
+        spouses: [jean]
+    households:
+      household:
+        members: [keith, jean]
+  output:
+    keith:
+      sapto_rebate_threshold: 30_994
+      seniors_and_pensioners_tax_offset: 1_270  # $1,602 - 12.5% of $2,656
+    jean:
+      sapto_eligible: false
+      seniors_and_pensioners_tax_offset: 0
+
+- name: 2025-26 Vanh and Mai, both eligible, one shaded out
+  period: 2026
+  input:
+    people:
+      vanh:
+        age: 70
+        employment_income: 32_590
+      mai:
+        age: 70
+        employment_income: 26_780
+    tax_units:
+      tax_unit:
+        primaries: [vanh]
+        spouses: [mai]
+    households:
+      household:
+        members: [vanh, mai]
+  output:
+    vanh:
+      seniors_and_pensioners_tax_offset: 1_403  # $1,602 - $199.50
+    mai:
+      seniors_and_pensioners_tax_offset: 1_602
+
+- name: 2025-26 Clare and Roy, both below the shading-out threshold
+  period: 2026
+  input:
+    people:
+      clare:
+        age: 70
+        employment_income: 23_020
+      roy:
+        age: 70
+        employment_income: 25_677
+    tax_units:
+      tax_unit:
+        primaries: [clare]
+        spouses: [roy]
+    households:
+      household:
+        members: [clare, roy]
+  output:
+    clare:
+      seniors_and_pensioners_tax_offset: 1_602
+    roy:
+      seniors_and_pensioners_tax_offset: 1_602
+
+- name: 2025-26 Deb and Ivan, half the combined income above the cut-out
+  period: 2026
+  input:
+    people:
+      deb:
+        age: 70
+        employment_income: 64_020
+      ivan:
+        age: 70
+        employment_income: 25_677
+    tax_units:
+      tax_unit:
+        primaries: [deb]
+        spouses: [ivan]
+    households:
+      household:
+        members: [deb, ivan]
+  output:
+    deb:
+      sapto_eligible: false
+      seniors_and_pensioners_tax_offset: 0
+    ivan:
+      sapto_eligible: false
+      seniors_and_pensioners_tax_offset: 0
+
+- name: 2025-26 Ying and Li Jun, eligible as a couple, Ying fully shaded out
+  period: 2026
+  input:
+    people:
+      ying:
+        age: 70
+        employment_income: 54_020
+      li_jun:
+        age: 70
+        employment_income: 25_677
+    tax_units:
+      tax_unit:
+        primaries: [ying]
+        spouses: [li_jun]
+    households:
+      household:
+        members: [ying, li_jun]
+  output:
+    ying:
+      sapto_eligible: true
+      seniors_and_pensioners_tax_offset: 0
+    li_jun:
+      seniors_and_pensioners_tax_offset: 1_602
+
+- name: 2025-26 illness separated couple rebate threshold
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 70
+        is_illness_separated_couple: true
+        employment_income: 0
+  output:
+    sapto_base_amount: 2_040
+    sapto_rebate_threshold: 33_732
+
+- name: 2025-26 rebate threshold above $37,000 uses reg 9(6)-(7) (ATO example 9)
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 70
+        sapto_base_amount: 3_480  # $2,040 plus $1,440 transferred from a spouse
+        employment_income: 48_000
+  output:
+    sapto_rebate_threshold: 39_912
+    seniors_and_pensioners_tax_offset: 2_469  # $3,480 - 12.5% of $8,088
+
+# Earlier and later years. Thresholds are derived from the income tax scale's
+# lowest marginal rate: 19% in 2023-24, 16% in 2024-25 and 2025-26, 15% in
+# 2026-27. The 2023-24 single cut-out of $50,119 matches the ATO's myTax 2024
+# Medicare levy instructions. The 2026-27 figures are calculated from the
+# regulations and not yet published by the ATO.
+
+- name: 2023-24 single, $1 of offset just below the cut-out
+  period: 2024
+  input:
+    people:
+      person_1:
+        age: 70
+        employment_income: 50_118
+  output:
+    sapto_rebate_threshold: 32_279
+    seniors_and_pensioners_tax_offset: 1  # $0.125 rounded up
+
+- name: 2023-24 single, not eligible at the $50,119 cut-out
+  period: 2024
+  input:
+    people:
+      person_1:
+        age: 70
+        employment_income: 50_119
+  output:
+    sapto_eligible: false
+    seniors_and_pensioners_tax_offset: 0
+
+- name: 2024-25 single rebate threshold
+  period: 2025
+  input:
+    people:
+      person_1:
+        age: 70
+        employment_income: 0
+  output:
+    sapto_rebate_threshold: 34_919
+    seniors_and_pensioners_tax_offset: 2_230
+
+- name: 2026-27 rebate thresholds with the 15% lowest rate (calculated)
+  period: 2027
+  input:
+    people:
+      single:
+        age: 70
+        employment_income: 0
+      partner_1:
+        age: 70
+        employment_income: 0
+      partner_2:
+        age: 70
+        employment_income: 0
+    tax_units:
+      single_unit:
+        primaries: [single]
+      couple_unit:
+        primaries: [partner_1]
+        spouses: [partner_2]
+    households:
+      household:
+        members: [single, partner_1, partner_2]
+  output:
+    single:
+      sapto_rebate_threshold: 36_034
+    partner_1:
+      sapto_rebate_threshold: 31_847
+    partner_2:
+      sapto_rebate_threshold: 31_847
+
+# Interaction with income tax payable and the Medicare levy.
+
+- name: 2025-26 Vanh and Mai, tax payable after LITO and SAPTO
+  period: 2026
+  input:
+    people:
+      vanh:
+        age: 70
+        employment_income: 32_590
+      mai:
+        age: 70
+        employment_income: 26_780
+    tax_units:
+      tax_unit:
+        primaries: [vanh]
+        spouses: [mai]
+    households:
+      household:
+        members: [vanh, mai]
+  output:
+    vanh:
+      income_tax: 2_302.40
+      income_tax_offsets: 2_103  # LITO $700 + SAPTO $1,403
+      income_tax_payable: 199.40
+      medicare_levy: 0  # below the SAPTO threshold of $44,268
+    mai:
+      income_tax_payable: 0
+      medicare_levy: 0
+
+- name: 2025-26 SAPTO recipient uses the higher Medicare levy thresholds
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 70
+        employment_income: 45_000
+  output:
+    seniors_and_pensioners_tax_offset: 970  # $2,230 - $1,260.125, rounded up
+    medicare_levy: 73.20  # 10% of $732 over $44,268
+
+- name: 2025-26 same income below Age Pension age pays the full levy
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 60
+        employment_income: 45_000
+  output:
+    seniors_and_pensioners_tax_offset: 0
+    medicare_levy: 900
+
+- name: 2025-26 without tax unit roles, two people are assessed as singles
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 70
+        employment_income: 0
+      person_2:
+        age: 70
+        employment_income: 0
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      is_partnered: false
+      sapto_base_amount: 2_230
+    person_2:
+      is_partnered: false
+      sapto_base_amount: 2_230

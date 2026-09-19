@@ -47,3 +47,14 @@ def multiply(entity, period, variables, options=None):
     for variable in variables[1:]:
         result = result * entity(variable, period, options)
     return result
+
+
+def round_up_to_dollar(amount):
+    """Round up to the nearest whole dollar.
+
+    Rounds to the cent in double precision first, so float noise in an
+    exact dollar amount does not round it up by a dollar.
+    """
+    import numpy as np
+
+    return np.ceil(np.round(np.asarray(amount, dtype=np.float64), 2))

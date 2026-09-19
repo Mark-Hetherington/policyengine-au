@@ -1,0 +1,27 @@
+description: Amounts used to work out the seniors and pensioners tax offset rebate threshold (shading-out threshold), with the income tax scale's lowest and second lowest marginal rates and tax-free threshold.
+metadata:
+  period: year
+  label: SAPTO rebate threshold formula
+  reference:
+    - title: Income Tax Assessment (1936 Act) Regulation 2015 (F2022C01160), regs 4, 9-11 (income years to 2025-26)
+      href: https://www.legislation.gov.au/F2015L01415/2022-12-09/2022-12-09/text/original/pdf
+    - title: Income Tax Assessment (1936 Act) Regulations 2025, regs 4, 9-11, 23 (income years from 2026-27)
+      href: https://www.legislation.gov.au/F2025L01060/2025-09-09/2025-09-09/text/original/pdf
+rebate_maximum_amount:
+  description: Rebate maximum amount added to the base rebate amount.
+  metadata:
+    unit: currency-AUD
+  values:
+    2022-07-01: 445
+rebate_reduction_threshold:
+  description: Rebate reduction threshold, above which the second threshold formula applies.
+  metadata:
+    unit: currency-AUD
+  values:
+    2022-07-01: 37_000
+rebate_reduction_rate:
+  description: Rebate reduction rate used in the second threshold formula.
+  metadata:
+    unit: /1
+  values:
+    2022-07-01: 0.015

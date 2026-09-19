@@ -57,6 +57,31 @@ zero.
 
 **Reference**: [ATO Low income tax offset](https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset)
 
+## Seniors and Pensioners Tax Offset
+
+A non-refundable offset for people qualified for the Age Pension, with rebate
+income below a cut-out. Maximum amounts: $2,230 single, $1,602 each member of
+a couple, $2,040 each member of an illness separated couple. The offset
+reduces by 12.5c per dollar of rebate income above the rebate threshold.
+
+The rebate threshold is not a fixed amount: the regulations derive it from the
+maximum amount, the tax-free threshold and the lowest marginal tax rate, so it
+changes with the income tax scale.
+
+| | Single | Couple (each) | Illness separated (each) |
+|---|---|---|---|
+| Rebate threshold 2024-25, 2025-26 | $34,919 | $30,994 | $33,732 |
+| Rebate threshold 2026-27 (calculated) | $36,034 | $31,847 | $34,767 |
+
+For a couple, eligibility tests half the combined rebate income. Couples must
+be given a tax unit with a member in the spouse role.
+
+Not yet modelled: transfer of a spouse's unused offset; qualification through
+payments other than the Age Pension; the rebate income components other than
+taxable income.
+
+**Reference**: [ATO Seniors and pensioners tax offset](https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/seniors-and-pensioners-tax-offset)
+
 ## Medicare Levy
 
 ### Standard Levy
@@ -68,8 +93,8 @@ zero.
   levy is capped at 10% of income above $28,011 (s 7)
 - **Families**: No levy at or below $47,238 family income, plus $4,338 per
   dependent child (s 8; parameters only, not yet applied)
-- **Seniors and pensioners** entitled to SAPTO: $44,268 / $55,335
-  (parameters only, not yet applied)
+- **Seniors and pensioners** entitled to at least $1 of SAPTO: no levy at or
+  below $44,268; phase-in to $55,335
 
 2026-27 thresholds are not yet legislated, so 2026-27 simulations use the
 2025-26 thresholds.
