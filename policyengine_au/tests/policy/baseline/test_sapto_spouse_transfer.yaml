@@ -3,16 +3,20 @@
 # A period of N reads parameters at N-01-01, so period 2026 is 2025-26 law.
 # Transferring an amount also moves the recipient's rebate threshold.
 
+# Age Pension is set to nil so each case isolates the offset: the ATO's
+# examples give rebate income directly, with any pension already in it.
 - name: 2025-26 ATO example 9, illness separated couple, $1,440 transferred
   period: 2026
   input:
     people:
       person_1:
         age: 70
+        age_pension: 0
         is_illness_separated_couple: true
         employment_income: 48_000
       person_2:
         age: 70
+        age_pension: 0
         is_illness_separated_couple: true
         employment_income: 10_000
     tax_units:
@@ -39,9 +43,11 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 45_000
       person_2:
         age: 70
+        age_pension: 0
         employment_income: 5_000
     tax_units:
       tax_unit:
@@ -70,9 +76,11 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 40_000
       person_2:
         age: 70
+        age_pension: 0
         employment_income: 0
         exempt_pension_income: 12_000
     tax_units:
@@ -99,9 +107,11 @@
     people:
       vanh:
         age: 70
+        age_pension: 0
         employment_income: 32_590
       mai:
         age: 70
+        age_pension: 0
         employment_income: 26_780
     tax_units:
       tax_unit:
@@ -124,6 +134,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 5_000
   output:
     sapto_unused_transferred_in: 0

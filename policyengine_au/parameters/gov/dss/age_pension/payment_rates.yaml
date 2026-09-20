@@ -1,86 +1,107 @@
-description: Age Pension payment rates
-reference:
-  - title: Age Pension - Payment rates
-    href: https://www.servicesaustralia.gov.au/payment-rates-for-age-pension
+description: Maximum Age Pension rates per fortnight, before the income and assets tests. The Guide publishes yearly amounts; these are those amounts divided by 26 fortnights, which is exact to the cent.
 metadata:
   unit: currency-AUD
-  label: Age Pension rates
+  label: Age Pension maximum rates
   period: fortnight
-  uprating: gov.treasury.cpi
+  reference:
+    - title: DSS Social Security Guide 5.2.2.10, Maximum basic rates of pension
+      href: https://guides.dss.gov.au/social-security-guide/5/2/2/10
+    - title: DSS Social Security Guide 5.2.8.10, Pension supplement historical rates
+      href: https://guides.dss.gov.au/social-security-guide/5/2/8/10
+    - title: DSS Social Security Guide 5.1.10.20, Energy supplement current rates
+      href: https://guides.dss.gov.au/social-security-guide/5/1/10/20
+    - title: Services Australia, How much Age Pension you can get (20 September 2026)
+      href: https://www.servicesaustralia.gov.au/how-much-age-pension-you-can-get
 single:
-  maximum_basic_rate:
-    description: Maximum basic rate for single pensioners
+  basic_rate:
+    description: Maximum basic rate for a single pensioner.
     values:
-      2023-09-20: 1_096.70
-      2024-01-01: 1_116.30
-      2024-03-20: 1_144.40
-  maximum_pension_supplement:
-    description: Maximum pension supplement for singles
+      2022-03-20: 900.80
+      2022-09-20: 936.80
+      2023-03-20: 971.50
+      2023-09-20: 1002.50
+      2024-03-20: 1020.60
+      2024-09-20: 1047.10
+      2025-03-20: 1051.30
+      2025-09-20: 1079.70
+      2026-03-20: 1100.30
+      2026-09-20: 1135.40
+  pension_supplement:
+    description: Maximum pension supplement for a single pensioner.
     values:
-      2023-09-20: 81.60
-      2024-01-01: 83.20
-      2024-03-20: 85.20
+      2022-03-20: 72.70
+      2022-09-20: 75.60
+      2023-03-20: 78.40
+      2023-09-20: 80.10
+      2024-03-20: 81.60
+      2024-09-20: 83.20
+      2025-03-20: 83.60
+      2025-09-20: 84.90
+      2026-03-20: 86.50
+      2026-09-20: 88.20
   energy_supplement:
-    description: Energy supplement for singles
+    description: Energy supplement for a single pensioner. Not indexed since 20 September 2014.
     values:
-      2023-09-20: 14.10
-      2024-01-01: 14.10
-      2024-03-20: 14.10
-couple:
-  combined:
-    maximum_basic_rate:
-      description: Maximum basic combined rate for couples
-      values:
-        2023-09-20: 1_651.40
-        2024-01-01: 1_682.80
-        2024-03-20: 1_725.20
-    maximum_pension_supplement:
-      description: Maximum pension supplement for couples combined
-      values:
-        2023-09-20: 122.80
-        2024-01-01: 125.20
-        2024-03-20: 128.40
-    energy_supplement:
-      description: Energy supplement for couples combined
-      values:
-        2023-09-20: 21.20
-        2024-01-01: 21.20
-        2024-03-20: 21.20
-  per_person:
-    maximum_basic_rate:
-      description: Maximum basic rate per person in couple
-      values:
-        2023-09-20: 825.70
-        2024-01-01: 841.40
-        2024-03-20: 862.60
-    maximum_pension_supplement:
-      description: Maximum pension supplement per person in couple
-      values:
-        2023-09-20: 61.40
-        2024-01-01: 62.60
-        2024-03-20: 64.20
-    energy_supplement:
-      description: Energy supplement per person in couple
-      values:
-        2023-09-20: 10.60
-        2024-01-01: 10.60
-        2024-03-20: 10.60
-  separated_illness:
-    maximum_basic_rate:
-      description: Rate when couple separated due to illness
-      values:
-        2023-09-20: 1_096.70
-        2024-01-01: 1_116.30
-        2024-03-20: 1_144.40
-    maximum_pension_supplement:
-      description: Pension supplement when separated due to illness
-      values:
-        2023-09-20: 81.60
-        2024-01-01: 83.20
-        2024-03-20: 85.20
-    energy_supplement:
-      description: Energy supplement when separated due to illness
-      values:
-        2023-09-20: 14.10
-        2024-01-01: 14.10
-        2024-03-20: 14.10
+      2022-03-20: 14.10
+partnered:
+  basic_rate:
+    description: Maximum basic rate for each member of a couple.
+    values:
+      2022-03-20: 679.00
+      2022-09-20: 706.20
+      2023-03-20: 732.30
+      2023-09-20: 755.70
+      2024-03-20: 769.30
+      2024-09-20: 789.30
+      2025-03-20: 792.50
+      2025-09-20: 813.90
+      2026-03-20: 829.40
+      2026-09-20: 855.90
+  pension_supplement:
+    description: Maximum pension supplement for each member of a couple.
+    values:
+      2022-03-20: 54.80
+      2022-09-20: 57.00
+      2023-03-20: 59.10
+      2023-09-20: 60.40
+      2024-03-20: 61.50
+      2024-09-20: 62.70
+      2025-03-20: 63.00
+      2025-09-20: 64.00
+      2026-03-20: 65.20
+      2026-09-20: 66.50
+  energy_supplement:
+    description: Energy supplement for each member of a couple. Not indexed since 20 September 2014.
+    values:
+      2022-03-20: 10.60
+illness_separated:
+  basic_rate:
+    description: Maximum basic rate for each member of a couple apart due to ill health.
+    values:
+      2022-03-20: 900.80
+      2022-09-20: 936.80
+      2023-03-20: 971.50
+      2023-09-20: 1002.50
+      2024-03-20: 1020.60
+      2024-09-20: 1047.10
+      2025-03-20: 1051.30
+      2025-09-20: 1079.70
+      2026-03-20: 1100.30
+      2026-09-20: 1135.40
+  pension_supplement:
+    description: Maximum pension supplement for each member of a couple apart due to ill health.
+    values:
+      2022-03-20: 72.70
+      2022-09-20: 75.60
+      2023-03-20: 78.40
+      2023-09-20: 80.10
+      2024-03-20: 81.60
+      2024-09-20: 83.20
+      2025-03-20: 83.60
+      2025-09-20: 84.90
+      2026-03-20: 86.50
+      2026-09-20: 88.20
+  energy_supplement:
+    description: Energy supplement for each member of a couple apart due to ill health. Not indexed since 20 September 2014.
+    values:
+      2022-03-20: 14.10

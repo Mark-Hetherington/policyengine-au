@@ -18,8 +18,11 @@ class taxable_income(Variable):
         investment = person("investment_income", period)
         rental = person("rental_income", period)
 
+        # Age Pension is a taxable payment.
+        age_pension = person("age_pension", period)
+
         # Sum all income sources
-        total_income = employment + self_employment + investment + rental
+        total_income = employment + self_employment + investment + rental + age_pension
 
         # Apply deductions (simplified for now)
         deductions = person("total_deductions", period)

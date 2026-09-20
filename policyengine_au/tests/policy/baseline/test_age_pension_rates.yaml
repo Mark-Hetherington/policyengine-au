@@ -1,0 +1,216 @@
+# Age Pension rates and means tests, against Services Australia figures as at
+# the 20 September 2026 indexation:
+# https://www.servicesaustralia.gov.au/how-much-age-pension-you-can-get
+# https://www.servicesaustralia.gov.au/income-test-for-age-pension
+# https://www.servicesaustralia.gov.au/assets-test-for-age-pension
+# A period of N reads parameters at N-01-01, so period 2027 is the rates in
+# force from 20 September 2026. Yearly amounts are 26 fortnights.
+# Couples need a benefit unit with both people as adults.
+# Maximum yearly rates: single $32,180.20 ($1,237.70 a fortnight), each member
+# of a couple $24,258.00 ($933.00 a fortnight).
+
+- name: 2026-27 single homeowner with no assets or income gets the full rate
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+  output:
+    age_pension_maximum_rate: 32_180.20
+    age_pension: 32_180.20
+
+- name: 2026-27 single homeowner above the assets free area
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        non_financial_assets: 433_000
+  output:
+    # $100,000 over the $333,000 free area, at $3 a fortnight per $1,000.
+    age_pension_assets_test_reduction: 7_800
+    age_pension: 24_380.20
+
+- name: 2026-27 single homeowner at the assets cut-off gets nothing
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        non_financial_assets: 745_750
+  output:
+    age_pension: 0
+
+- name: 2026-27 single non-homeowner above the assets free area
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        non_financial_assets: 700_000
+  output:
+    # $100,000 over the $600,000 non-homeowner free area.
+    age_pension_assets_test_reduction: 7_800
+    age_pension: 24_380.20
+
+- name: 2026-27 single with financial assets deemed above the income free area
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        financial_assets: 300_000
+  output:
+    # 1.75% of $66,800 plus 3.75% of $233,200.
+    age_pension_deemed_income: 9_914
+    # ($381.31 a fortnight - $226) x 50c x 26.
+    age_pension_income_test_reduction: 2_019
+    age_pension: 30_161.20
+
+- name: 2026-27 single below Age Pension age gets nothing
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 60
+        is_homeowner: true
+  output:
+    age_pension_eligible: false
+    age_pension: 0
+
+- name: 2026-27 homeowner couple at the assets free area get the full rate each
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        non_financial_assets: 499_000
+      person_2:
+        age: 70
+        is_homeowner: true
+    benefit_units:
+      benefit_unit:
+        adults: [person_1, person_2]
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      is_pension_partnered: true
+      age_pension_maximum_rate: 24_258
+      age_pension: 24_258
+    person_2:
+      age_pension: 24_258
+
+- name: 2026-27 homeowner couple at the assets cut-off get nothing
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        non_financial_assets: 1_121_000
+      person_2:
+        age: 70
+        is_homeowner: true
+    benefit_units:
+      benefit_unit:
+        adults: [person_1, person_2]
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      age_pension: 0
+    person_2:
+      age_pension: 0
+
+- name: 2026-27 couple's employment income is covered by the Work Bonus
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        employment_income: 10_000
+      person_2:
+        age: 70
+        is_homeowner: true
+        employment_income: 10_000
+    benefit_units:
+      benefit_unit:
+        adults: [person_1, person_2]
+    tax_units:
+      tax_unit:
+        primaries: [person_1]
+        spouses: [person_2]
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      # $10,000 less the $7,800 Work Bonus each, so $4,400 combined, which is
+      # under the $396 a fortnight couple free area.
+      age_pension_income_test_reduction: 0
+      age_pension: 24_258
+      # Age Pension is taxable, and the offsets then apply.
+      taxable_income: 34_258
+      seniors_and_pensioners_tax_offset: 1_301
+      income_tax_payable: 407.70
+      medicare_levy: 0
+    person_2:
+      age_pension: 24_258
+
+- name: 2026-27 couple apart due to ill health get the single rate each
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        is_illness_separated_couple: true
+        non_financial_assets: 499_000
+      person_2:
+        age: 70
+        is_homeowner: true
+        is_illness_separated_couple: true
+    benefit_units:
+      benefit_unit:
+        adults: [person_1, person_2]
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      age_pension_maximum_rate: 32_180.20
+      age_pension: 32_180.20
+    person_2:
+      age_pension: 32_180.20
+
+- name: 2024-25 single homeowner gets the rates in force from 20 September 2024
+  period: 2025
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+  output:
+    # ($1,047.10 + $83.20 + $14.10) a fortnight over 26 fortnights.
+    age_pension: 29_754.40
+
+- name: 2025-26 single with financial assets deemed at the 0.75% and 2.75% rates
+  period: 2026
+  input:
+    people:
+      person_1:
+        age: 70
+        is_homeowner: true
+        financial_assets: 200_000
+  output:
+    # 0.75% of $64,200 plus 2.75% of $135,800.
+    age_pension_deemed_income: 4_216

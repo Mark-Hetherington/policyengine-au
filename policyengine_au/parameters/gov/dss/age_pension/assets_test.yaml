@@ -1,83 +1,64 @@
-description: Age Pension assets test parameters
-reference:
-  - title: Age Pension assets test
-    href: https://www.servicesaustralia.gov.au/assets-test-for-age-pension
+description: Age Pension assets test. The cut-off points are derived from the free area, the maximum rate and the taper rate rather than stored.
 metadata:
   label: Age Pension assets test
-assets_free_area:
-  description: Asset value allowed before pension reduction
+  reference:
+    - title: DSS Social Security Guide 4.10.3, Historical age pension income & assets limits
+      href: https://guides.dss.gov.au/social-security-guide/4/10/3
+    - title: Services Australia, Assets test for Age Pension (20 September 2026)
+      href: https://www.servicesaustralia.gov.au/assets-test-for-age-pension
+free_area:
+  description: Assets allowed before the pension is reduced (the assets value limit, Social Security Act 1991 s 1064 point 1064-G3).
   metadata:
     unit: currency-AUD
   single:
     homeowner:
       values:
+        2022-07-01: 280_000
         2023-07-01: 301_750
-        2024-01-01: 314_000
         2024-07-01: 314_000
+        2025-07-01: 321_500
+        2026-07-01: 333_000
     non_homeowner:
       values:
+        2022-07-01: 504_500
         2023-07-01: 543_750
-        2024-01-01: 566_000
         2024-07-01: 566_000
+        2025-07-01: 579_500
+        2026-07-01: 600_000
   couple_combined:
+    description: Combined assets for a couple, including a couple separated due to illness.
     homeowner:
       values:
+        2022-07-01: 419_000
         2023-07-01: 451_500
-        2024-01-01: 470_000
         2024-07-01: 470_000
+        2025-07-01: 481_500
+        2026-07-01: 499_000
     non_homeowner:
       values:
+        2022-07-01: 643_500
         2023-07-01: 693_500
-        2024-01-01: 722_000
         2024-07-01: 722_000
-  couple_separated_illness:
-    homeowner:
-      values:
-        2023-07-01: 451_500
-        2024-01-01: 470_000
-        2024-07-01: 470_000
-    non_homeowner:
-      values:
-        2023-07-01: 693_500
-        2024-01-01: 722_000
-        2024-07-01: 722_000
+        2025-07-01: 739_500
+        2026-07-01: 766_000
 taper_rate:
-  description: Rate at which pension reduces per $1000 of assets above free area
+  description: Reduction in pension per fortnight for each $1,000 of assets above the free area, halved for each member of a couple. $3.00 since 1 January 2017.
   metadata:
     unit: currency-AUD
-  single:
-    values:
-      2023-07-01: 78.00  # $3 per fortnight per $1000
-      2024-01-01: 78.00
-      2024-07-01: 78.00
-  couple_combined:
-    values:
-      2023-07-01: 78.00
-      2024-01-01: 78.00
-      2024-07-01: 78.00
-assets_cutoff:
-  description: Asset levels where pension reduces to zero
+    period: fortnight
+    reference:
+      - title: Services Australia, Assets Test for single pension customers (108-03010090)
+        href: https://operational.servicesaustralia.gov.au/public/Pages/income-assests-and-rates-of-payment/108-03010090-01.html
+      - title: Services Australia, Assets Test for partnered pension customers (108-03010100)
+        href: https://operational.servicesaustralia.gov.au/public/Pages/income-assests-and-rates-of-payment/108-03010100-01.html
+  values:
+    2022-03-20: 3.00
+taper_increment:
+  description: Assets above the free area are rounded down to a multiple of this amount (Social Security Act 1991 s 1064 point 1064-G7).
   metadata:
     unit: currency-AUD
-  single:
-    homeowner:
-      values:
-        2023-07-01: 674_000
-        2024-01-01: 695_500
-        2024-07-01: 695_500
-    non_homeowner:
-      values:
-        2023-07-01: 916_000
-        2024-01-01: 947_500
-        2024-07-01: 947_500
-  couple_combined:
-    homeowner:
-      values:
-        2023-07-01: 1_012_500
-        2024-01-01: 1_045_500
-        2024-07-01: 1_045_500
-    non_homeowner:
-      values:
-        2023-07-01: 1_254_500
-        2024-01-01: 1_297_500
-        2024-07-01: 1_297_500
+    reference:
+      - title: Social Security Act 1991, s 1064 point 1064-G7
+        href: https://www.legislation.gov.au/C2004A04121/2026-07-01/2026-07-01/text/original/pdf/3
+  values:
+    2022-03-20: 250

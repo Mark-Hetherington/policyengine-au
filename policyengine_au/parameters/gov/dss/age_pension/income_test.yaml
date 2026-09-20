@@ -1,76 +1,106 @@
-description: Age Pension income test parameters
-reference:
-  - title: Age Pension income test
-    href: https://www.servicesaustralia.gov.au/income-test-for-age-pension
+description: Age Pension income test. Free areas come from the Guide's yearly amounts divided by 26 fortnights; the couple free area is twice the amount for each member of a couple.
 metadata:
   label: Age Pension income test
-income_free_area:
-  description: Fortnightly income allowed before pension reduction
+  reference:
+    - title: DSS Social Security Guide 4.10.3, Historical age pension income & assets limits
+      href: https://guides.dss.gov.au/social-security-guide/4/10/3
+    - title: Services Australia, Income test for Age Pension (20 September 2026)
+      href: https://www.servicesaustralia.gov.au/income-test-for-age-pension
+free_area:
+  description: Income per fortnight before the pension is reduced.
   metadata:
     unit: currency-AUD
     period: fortnight
   single:
     values:
-      2023-09-20: 204.00
-      2024-01-01: 212.00
-      2024-07-01: 212.00
+        2022-07-01: 190.00
+        2023-07-01: 204.00
+        2024-07-01: 212.00
+        2025-07-01: 218.00
+        2026-07-01: 226.00
   couple_combined:
+    description: Combined income per fortnight for a couple, including a couple apart due to ill health.
     values:
-      2023-09-20: 360.00
-      2024-01-01: 372.00
-      2024-07-01: 372.00
-  couple_separated_illness:
-    values:
-      2023-09-20: 360.00
-      2024-01-01: 372.00
-      2024-07-01: 372.00
+        2022-07-01: 336.00
+        2023-07-01: 360.00
+        2024-07-01: 372.00
+        2025-07-01: 380.00
+        2026-07-01: 396.00
 taper_rate:
-  description: Rate at which pension reduces for income above free area
+  description: Reduction in pension per dollar of income above the free area.
   metadata:
     unit: /1
-  values:
-    2023-09-20: 0.50  # 50 cents per dollar
-    2024-01-01: 0.50
-    2024-07-01: 0.50
-work_bonus:
-  description: Additional income from work that doesn't affect pension
-  metadata:
-    unit: currency-AUD
-  fortnightly_amount:
-    description: Amount of employment income exempt per fortnight
-    values:
-      2023-09-20: 300.00
-      2024-01-01: 300.00
-      2024-07-01: 300.00
-  maximum_accrual:
-    description: Maximum unused work bonus that can be accrued
-    values:
-      2023-09-20: 11_800.00
-      2024-01-01: 11_800.00
-      2024-07-01: 11_800.00
-deeming_rates:
-  description: Assumed rates of return on financial investments
-  metadata:
-    unit: /1
-  lower_rate:
-    description: Deeming rate for amounts below threshold
-    values:
-      2023-07-01: 0.0025  # 0.25% per annum
-      2024-05-01: 0.0025
-  upper_rate:
-    description: Deeming rate for amounts above threshold
-    values:
-      2023-07-01: 0.0225  # 2.25% per annum
-      2024-05-01: 0.0225
-deeming_thresholds:
-  description: Thresholds for deeming rate application
-  metadata:
-    unit: currency-AUD
   single:
     values:
-      2023-07-01: 60_400
-      2024-07-01: 62_600
-  couple_combined:
+      2022-03-20: 0.5
+  partnered:
+    description: Reduction in each partner's pension per dollar of combined income above the couple free area.
     values:
-      2023-07-01: 100_200
-      2024-07-01: 103_800
+      2022-03-20: 0.25
+deeming:
+  description: Assumed rates of return on financial assets. Rates were frozen at 0.25% and 2.25% until 19 September 2025 and are being returned to market levels in steps.
+  metadata:
+    reference:
+      - title: DSS Social Security Guide 4.4.1.10, Overview of deeming
+        href: https://guides.dss.gov.au/social-security-guide/4/4/1/10
+      - title: Services Australia, Deeming (Age Pension, 20 September 2026)
+        href: https://www.servicesaustralia.gov.au/deeming?context=22526
+  lower_rate:
+    description: Deemed rate of return up to the deeming threshold.
+    metadata:
+      unit: /1
+    values:
+        2022-07-01: 0.0025
+        2025-09-20: 0.0075
+        2026-03-20: 0.0125
+        2026-09-20: 0.0175
+  upper_rate:
+    description: Deemed rate of return above the deeming threshold.
+    metadata:
+      unit: /1
+    values:
+        2022-07-01: 0.0225
+        2025-09-20: 0.0275
+        2026-03-20: 0.0325
+        2026-09-20: 0.0375
+  threshold:
+    metadata:
+      unit: currency-AUD
+      period: year
+    single:
+      description: Financial assets deemed at the lower rate for a single person.
+      values:
+        2022-07-01: 56_400
+        2023-07-01: 60_400
+        2024-07-01: 62_600
+        2025-07-01: 64_200
+        2026-07-01: 66_800
+    couple_combined:
+      description: Combined financial assets deemed at the lower rate for a couple where at least one partner gets a pension.
+      values:
+        2022-07-01: 93_600
+        2023-07-01: 100_200
+        2024-07-01: 103_800
+        2025-07-01: 106_200
+        2026-07-01: 110_600
+work_bonus:
+  description: Employment income disregarded under the Work Bonus.
+  metadata:
+    reference:
+      - title: DSS Social Security Guide 3.1.15.50, Work bonus history
+        href: https://guides.dss.gov.au/social-security-guide/3/1/15/50
+      - title: Services Australia, How the Work Bonus works
+        href: https://www.servicesaustralia.gov.au/how-work-bonus-works
+  fortnightly_amount:
+    description: Employment income disregarded each fortnight, $300 since 1 July 2019.
+    metadata:
+      unit: currency-AUD
+      period: fortnight
+    values:
+      2022-03-20: 300
+  maximum_balance:
+    description: Maximum Work Bonus balance that can accrue, permanent at $11,800 from 1 January 2024. Not modelled, because the balance carries across periods.
+    metadata:
+      unit: currency-AUD
+    values:
+      2024-01-01: 11_800

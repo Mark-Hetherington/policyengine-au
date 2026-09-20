@@ -5,36 +5,49 @@ Comprehensive documentation of Australian social security and family assistance 
 ## Age Pension
 
 ### Eligibility
-- **Age**: 67 years (born after 1 January 1957)
-- **Residence**: 10 years Australian residence, including 5 continuous years
+- **Age**: 67 years (born on or after 1 January 1957)
+- **Residence**: 10 years Australian residence, including 5 continuous years. Assumed met; not yet modelled.
 
-### Payment Rates (March 2024)
+### Payment Rates (from 20 September 2026)
 
 | Category | Basic Rate | Pension Supplement | Energy Supplement | Total (fortnight) |
 |----------|------------|-------------------|-------------------|-------------------|
-| Single | $1,144.40 | $85.20 | $14.10 | $1,243.70 |
-| Couple (each) | $862.60 | $64.20 | $10.60 | $937.40 |
-| Couple separated (illness) | $1,144.40 | $85.20 | $14.10 | $1,243.70 |
+| Single | $1,135.40 | $88.20 | $14.10 | $1,237.70 |
+| Couple (each) | $855.90 | $66.50 | $10.60 | $933.00 |
+| Couple apart, ill health (each) | $1,135.40 | $88.20 | $14.10 | $1,237.70 |
+
+Rates index every 20 March and 20 September; parameters carry each step back to
+March 2022. Yearly amounts are 26 fortnights.
 
 ### Means Testing
 
-#### Income Test
-- **Free Area**: $212/fortnight (single), $372/fortnight (couple combined)
-- **Taper Rate**: 50 cents per dollar above free area
-- **Work Bonus**: $300/fortnight employment income exempt (can accrue to $11,800)
+The pension is the maximum rate less the larger of the two reductions.
 
-#### Assets Test
+#### Income Test (from 20 September 2026)
+- **Free Area**: $226/fortnight (single), $396/fortnight (couple combined)
+- **Taper Rate**: 50c per dollar for a single person; 25c per dollar of combined
+  income for each member of a couple
+- **Deeming**: 1.75% up to $66,800 (single) or $110,600 (couple combined), then
+  3.75%. Rates were frozen at 0.25%/2.25% until 19 September 2025 and are
+  returning to market levels in steps.
+- **Work Bonus**: first $300/fortnight of employment income disregarded. The
+  balance that accrues across fortnights (up to $11,800) is not modelled.
+
+#### Assets Test (from 1 July 2026)
 
 | Category | Homeowner | Non-homeowner |
 |----------|-----------|---------------|
-| Single - Free area | $314,000 | $566,000 |
-| Single - Cut-off | $695,500 | $947,500 |
-| Couple - Free area | $470,000 | $722,000 |
-| Couple - Cut-off | $1,045,500 | $1,297,500 |
+| Single - Free area | $333,000 | $600,000 |
+| Couple - Free area (combined) | $499,000 | $766,000 |
 
-- **Taper Rate**: $3.00 per fortnight per $1,000 above free area
+Assets above the free area reduce the pension by $3 per fortnight per $1,000,
+halved for each member of a couple, after rounding the excess down to a
+multiple of $250. Cut-off points are derived rather than stored.
 
-**Reference**: [Age Pension](https://www.servicesaustralia.gov.au/age-pension)
+### Not modelled
+
+Transitional rates, Rent Assistance, remote area allowance, blind pensioners,
+couples where only one partner is eligible, and the residence rules.
 
 ## JobSeeker Payment
 

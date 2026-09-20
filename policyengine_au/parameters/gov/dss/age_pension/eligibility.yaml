@@ -5,18 +5,11 @@ reference:
 metadata:
   label: Age Pension eligibility
 age_threshold:
-  description: Minimum age for Age Pension eligibility
+  description: Minimum age to qualify for the Age Pension. Dated by when the law applied rather than by date of birth. The qualifying age rose in steps to 67 for people born on or after 1 January 1957.
   metadata:
     unit: year
   values:
-    1952-07-01: 65.0  # Born before 1 July 1952
-    1952-07-02: 65.5  # Born 1 July 1952 to 31 December 1953
-    1954-01-01: 66.0  # Born 1 January 1954 to 30 June 1955
-    1955-07-01: 66.5  # Born 1 July 1955 to 31 December 1956
-    1957-01-01: 67.0  # Born on or after 1 January 1957
     2023-07-01: 67.0
-    2024-01-01: 67.0
-    2024-07-01: 67.0
 qualifying_residence:
   description: Minimum years of Australian residence between 16 and Age Pension age
   values:

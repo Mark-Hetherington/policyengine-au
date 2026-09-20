@@ -8,12 +8,15 @@
 # ATO beneficiary and SAPTO tax offset calculator:
 # https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/seniors-and-pensioners-tax-offset
 
+# Age Pension is set to nil so each case isolates the offset: the ATO's
+# examples give rebate income directly, with any pension already in it.
 - name: 2025-26 José, single, shaded-out offset rounded up
   period: 2026
   input:
     people:
       jose:
         age: 70
+        age_pension: 0
         employment_income: 39_000
   output:
     sapto_rebate_threshold: 34_919
@@ -25,6 +28,7 @@
     people:
       marko:
         age: 67
+        age_pension: 0
         employment_income: 85_690
   output:
     sapto_eligible: false
@@ -36,9 +40,11 @@
     people:
       keith:
         age: 70
+        age_pension: 0
         employment_income: 33_650
       jean:
         age: 60
+        age_pension: 0
         employment_income: 0
     tax_units:
       tax_unit:
@@ -61,9 +67,11 @@
     people:
       vanh:
         age: 70
+        age_pension: 0
         employment_income: 32_590
       mai:
         age: 70
+        age_pension: 0
         employment_income: 26_780
     tax_units:
       tax_unit:
@@ -84,9 +92,11 @@
     people:
       clare:
         age: 70
+        age_pension: 0
         employment_income: 23_020
       roy:
         age: 70
+        age_pension: 0
         employment_income: 25_677
     tax_units:
       tax_unit:
@@ -107,9 +117,11 @@
     people:
       deb:
         age: 70
+        age_pension: 0
         employment_income: 64_020
       ivan:
         age: 70
+        age_pension: 0
         employment_income: 25_677
     tax_units:
       tax_unit:
@@ -132,9 +144,11 @@
     people:
       ying:
         age: 70
+        age_pension: 0
         employment_income: 54_020
       li_jun:
         age: 70
+        age_pension: 0
         employment_income: 25_677
     tax_units:
       tax_unit:
@@ -156,6 +170,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         is_illness_separated_couple: true
         employment_income: 0
   output:
@@ -168,6 +183,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         sapto_base_amount: 3_480  # $2,040 plus $1,440 transferred from a spouse
         employment_income: 48_000
   output:
@@ -186,6 +202,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 50_118
   output:
     sapto_rebate_threshold: 32_279
@@ -197,6 +214,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 50_119
   output:
     sapto_eligible: false
@@ -208,6 +226,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 0
   output:
     sapto_rebate_threshold: 34_919
@@ -219,12 +238,15 @@
     people:
       single:
         age: 70
+        age_pension: 0
         employment_income: 0
       partner_1:
         age: 70
+        age_pension: 0
         employment_income: 0
       partner_2:
         age: 70
+        age_pension: 0
         employment_income: 0
     tax_units:
       single_unit:
@@ -251,9 +273,11 @@
     people:
       vanh:
         age: 70
+        age_pension: 0
         employment_income: 32_590
       mai:
         age: 70
+        age_pension: 0
         employment_income: 26_780
     tax_units:
       tax_unit:
@@ -278,6 +302,7 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 45_000
   output:
     seniors_and_pensioners_tax_offset: 970  # $2,230 - $1,260.125, rounded up
@@ -289,6 +314,7 @@
     people:
       person_1:
         age: 60
+        age_pension: 0
         employment_income: 45_000
   output:
     seniors_and_pensioners_tax_offset: 0
@@ -300,9 +326,11 @@
     people:
       person_1:
         age: 70
+        age_pension: 0
         employment_income: 0
       person_2:
         age: 70
+        age_pension: 0
         employment_income: 0
     households:
       household:

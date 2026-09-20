@@ -1,0 +1,1 @@
+Age Pension is now calculated: `age_pension`, with the income test, assets test and deeming. Parameters are current to the 20 September 2026 indexation, with history back to March 2022, and the derived assets cut-offs are no longer stored.
