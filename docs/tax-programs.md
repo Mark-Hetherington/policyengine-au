@@ -76,9 +76,14 @@ changes with the income tax scale.
 For a couple, eligibility tests half the combined rebate income. Couples must
 be given a tax unit with a member in the spouse role.
 
-Not yet modelled: transfer of a spouse's unused offset; qualification through
-payments other than the Age Pension; the rebate income components other than
-taxable income.
+Where one spouse cannot use all their offset, the unused part can transfer to
+the other, which also moves the recipient's rebate threshold. If the
+transferring spouse's income (including exempt pension income) is above
+$6,000, the amount transferred is their maximum less 15c per dollar above
+$6,000.
+
+Not yet modelled: qualification through payments other than the Age Pension;
+the rebate income components other than taxable income.
 
 **Reference**: [ATO Seniors and pensioners tax offset](https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/seniors-and-pensioners-tax-offset)
 

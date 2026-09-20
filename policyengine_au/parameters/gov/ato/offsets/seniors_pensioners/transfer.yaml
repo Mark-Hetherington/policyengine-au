@@ -1,0 +1,21 @@
+description: Amounts used to work out the unused seniors and pensioners tax offset that transfers to a spouse.
+metadata:
+  period: year
+  label: SAPTO spouse transfer
+  reference:
+    - title: Income Tax Assessment (1936 Act) Regulation 2015 (F2022C01160), reg 12 (income years to 2025-26)
+      href: https://www.legislation.gov.au/F2015L01415/2022-12-09/2022-12-09/text/original/pdf
+    - title: Income Tax Assessment (1936 Act) Regulations 2025, reg 12 (income years from 2026-27)
+      href: https://www.legislation.gov.au/F2025L01060/2025-09-09/2025-09-09/text/original/pdf
+income_floor:
+  description: Spouse income above which the transferred amount is worked out with the reg 12(3)(b)(ii) formula.
+  metadata:
+    unit: currency-AUD
+  values:
+    2022-07-01: 6_000
+rate:
+  description: Rate at which the spouse's income above the floor reduces the amount transferred.
+  metadata:
+    unit: /1
+  values:
+    2022-07-01: 0.15
