@@ -1,0 +1,61 @@
+description: Minimum share of an account based pension's balance that must be paid each year, by the member's age. Halved for 2019-20 to 2022-23 as a COVID-19 measure, back to normal from 2023-24.
+brackets:
+  - threshold:
+      values:
+        2022-07-01: 0
+    amount:
+      values:
+        2022-07-01: 0.02
+        2023-07-01: 0.04
+  - threshold:
+      values:
+        2022-07-01: 65
+    amount:
+      values:
+        2022-07-01: 0.025
+        2023-07-01: 0.05
+  - threshold:
+      values:
+        2022-07-01: 75
+    amount:
+      values:
+        2022-07-01: 0.03
+        2023-07-01: 0.06
+  - threshold:
+      values:
+        2022-07-01: 80
+    amount:
+      values:
+        2022-07-01: 0.035
+        2023-07-01: 0.07
+  - threshold:
+      values:
+        2022-07-01: 85
+    amount:
+      values:
+        2022-07-01: 0.045
+        2023-07-01: 0.09
+  - threshold:
+      values:
+        2022-07-01: 90
+    amount:
+      values:
+        2022-07-01: 0.055
+        2023-07-01: 0.11
+  - threshold:
+      values:
+        2022-07-01: 95
+    amount:
+      values:
+        2022-07-01: 0.07
+        2023-07-01: 0.14
+metadata:
+  type: single_amount
+  threshold_unit: year
+  amount_unit: /1
+  label: Minimum pension drawdown factor
+  reference:
+    - title: ATO, Payments from super (Table 11, minimum percentage factor)
+      href: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/payments-from-super
+    - title: Superannuation Industry (Supervision) Regulations 1994, Schedule 7
+      href: https://www.legislation.gov.au/F1994B00196/latest

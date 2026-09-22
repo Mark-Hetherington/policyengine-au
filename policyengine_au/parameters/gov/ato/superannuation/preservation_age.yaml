@@ -1,0 +1,10 @@
+description: Age at which preserved superannuation benefits can be accessed on retirement. The rise from 55 to 60 finished in 2024-25, so from then it is 60 for everyone; the birth-year cohorts of the transition are not modelled.
+values:
+  2022-07-01: 59
+  2024-07-01: 60
+metadata:
+  unit: year
+  label: Preservation age
+  reference:
+    - title: ATO, Schedule 13 supporting information (preservation age)
+      href: https://www.ato.gov.au/tax-rates-and-codes/schedule-13-tax-table-for-superannuation-income-streams/supporting-information

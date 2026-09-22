@@ -1,0 +1,97 @@
+# Superannuation guarantee, contributions tax and Division 293.
+# A period of N reads parameters at N-01-01, so period 2027 is 2026-27 law.
+# 2026-27: SG 12%, maximum contribution base $270,830, concessional cap
+# $32,500. 2024-25: SG 11.5%, maximum contribution base $260,280 (four times
+# the $65,070 quarterly base).
+
+- name: 2026-27 super guarantee at 12%
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 100_000
+  output:
+    super_guarantee: 12_000
+
+- name: 2026-27 super guarantee stops at the maximum contribution base
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 400_000
+  output:
+    super_guarantee: 32_499.60  # 12% of $270,830
+
+- name: 2024-25 super guarantee at 11.5%
+  period: 2025
+  input:
+    people:
+      person_1:
+        employment_income: 100_000
+  output:
+    super_guarantee: 11_500
+
+- name: 2026-27 contributions tax at 15%
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 100_000
+        concessional_contributions: 32_500
+  output:
+    concessional_contributions_tax: 4_875
+
+- name: 2026-27 no Division 293 below the threshold
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 200_000
+        concessional_contributions: 30_000
+  output:
+    division_293_tax: 0  # $230,000 is under $250,000
+
+- name: 2026-27 Division 293 on the excess over the threshold
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 240_000
+        concessional_contributions: 30_000
+  output:
+    # $270,000 total, $20,000 over the threshold, which is less than the
+    # contributions, so 15% of $20,000.
+    division_293_tax: 3_000
+
+- name: 2026-27 Division 293 capped at the contributions
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 300_000
+        concessional_contributions: 32_500
+  output:
+    # The excess is $82,500, more than the contributions, so 15% of $32,500.
+    division_293_tax: 4_875
+
+- name: 2026-27 couple with different incomes, only one liable
+  period: 2027
+  input:
+    people:
+      person_1:
+        employment_income: 260_000
+        concessional_contributions: 32_500
+      person_2:
+        employment_income: 90_000
+        concessional_contributions: 10_800
+    households:
+      household:
+        members: [person_1, person_2]
+  output:
+    person_1:
+      super_guarantee: 31_200
+      # $42,500 over the threshold, capped at the $32,500 contributions.
+      division_293_tax: 4_875
+    person_2:
+      super_guarantee: 10_800
+      division_293_tax: 0

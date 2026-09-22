@@ -116,6 +116,32 @@ Additional levy for high-income earners without private health insurance:
 
 **Reference**: [Medicare Levy](https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy)
 
+## Superannuation
+
+### Contributions (2026-27)
+
+| Item | Value |
+|------|-------|
+| Super guarantee rate | 12% |
+| Maximum contribution base | $270,830 a year |
+| Concessional cap | $32,500 |
+| Non-concessional cap | $130,000 |
+| Contributions tax | 15% |
+| Division 293 threshold / rate | $250,000 / extra 15% |
+
+Division 293 applies to the lesser of the concessional contributions and the
+amount by which income plus those contributions exceeds the threshold.
+
+### Minimum pension drawdown
+
+An account based pension must pay out at least this share of its balance each
+year: 4% under 65, 5% at 65-74, 6% at 75-79, 7% at 80-84, 9% at 85-89, 11% at
+90-94 and 14% from 95. Halved for 2019-20 to 2022-23.
+
+Preservation age is 60; the rise from 55 finished in 2024-25.
+
+**Reference**: [ATO Key superannuation rates and thresholds](https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds)
+
 ## HECS-HELP Student Loan Repayments
 
 ### Repayment Thresholds and Rates (2024-25)

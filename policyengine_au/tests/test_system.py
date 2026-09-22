@@ -58,3 +58,19 @@ def test_parameters_loaded():
 
     # Test Medicare levy
     assert p_2024.gov.ato.medicare.levy_rate == 0.02
+
+
+def test_superannuation_parameters():
+    """Minimum drawdown varies by age; preservation age is 60."""
+    system = AustralianTaxBenefitSystem()
+    p = system.parameters("2027-01-01").gov.ato.superannuation
+
+    # Minimum pension drawdown factors, ATO Table 11.
+    drawdown = p.minimum_drawdown
+    assert drawdown.calc(64) == 0.04
+    assert drawdown.calc(65) == 0.05
+    assert drawdown.calc(80) == 0.07
+    assert drawdown.calc(95) == 0.14
+
+    assert p.preservation_age == 60
+    assert p.contribution_rates.concessional_contribution_cap == 32_500

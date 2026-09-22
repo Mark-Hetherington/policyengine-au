@@ -1,0 +1,1 @@
+Superannuation parameters are current to 2026-27: the 12% super guarantee, the annual maximum contribution base under Payday Super, the $32,500 concessional and $130,000 non-concessional caps, and the Division 293 threshold.
