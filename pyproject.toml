@@ -63,6 +63,12 @@ Repository = "https://github.com/PolicyEngine/policyengine-au"
 Documentation = "https://policyengine.org/au/api"
 Tracker = "https://github.com/PolicyEngine/policyengine-au/issues"
 
+[tool.ruff]
+# Format Python only. Ruff also formats Python inside Markdown code blocks,
+# which collapses the multi-line examples in README.md and docs/ into single
+# lines and makes them harder to read.
+extend-exclude = ["*.md"]
+
 [tool.pytest.ini_options]
 testpaths = ["policyengine_au/tests"]
 python_files = ["*.py"]

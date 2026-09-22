@@ -31,10 +31,10 @@ def normalize_input_values(value, period):
     return {period: value}
 
 
-def pytest_collect_file(parent, path):
+def pytest_collect_file(parent, file_path):
     """Custom collector for YAML test files."""
-    if path.ext == ".yaml" and path.basename.startswith("test_"):
-        return YamlFile.from_parent(parent, fspath=path)
+    if file_path.suffix == ".yaml" and file_path.name.startswith("test_"):
+        return YamlFile.from_parent(parent, path=file_path)
 
 
 class YamlFile(pytest.File):
@@ -42,7 +42,7 @@ class YamlFile(pytest.File):
 
     def collect(self):
         """Collect test items from YAML file."""
-        with open(self.fspath) as f:
+        with open(self.path) as f:
             test_cases = yaml.safe_load(f)
 
         for i, test_case in enumerate(test_cases):
@@ -115,4 +115,4 @@ class YamlTestItem(pytest.Item):
 
     def reportinfo(self):
         """Report test location."""
-        return self.fspath, 0, f"[{self.name}]"
+        return self.path, 0, f"[{self.name}]"
