@@ -1,0 +1,19 @@
+description: Carry forward of unused concessional contributions cap. Unused cap from earlier years can lift this year's cap, but only for someone whose total superannuation balance was under the limit just before the year started.
+metadata:
+  label: Concessional cap carry forward
+  reference:
+    - title: Income Tax Assessment Act 1997, s 291-20(3) to (5)
+      href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/6
+years:
+  description: How many previous years of unused cap can be applied. Unused cap older than this expires.
+  metadata:
+    unit: year
+  values:
+    2018-07-01: 5
+total_super_balance_limit:
+  description: Total superannuation balance, just before the start of the year, below which carry forward is available.
+  metadata:
+    unit: currency-AUD
+    period: year
+  values:
+    2018-07-01: 500_000
