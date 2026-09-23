@@ -1,0 +1,18 @@
+description: Limits on splitting concessional contributions with a spouse. The amount is worked out on the last financial year that ended before the application, so a split always lags a year.
+metadata:
+  label: Spouse contribution splitting
+  reference:
+    - title: Superannuation Industry (Supervision) Regulations 1994, regs 6.41 and 6.44
+      href: https://www.legislation.gov.au/F1996B00580/2026-07-01/2026-07-01/text/original/pdf/2
+maximum_share:
+  description: Share of a year's concessional contributions that can be split, the other limit being the concessional cap itself.
+  metadata:
+    unit: /1
+  values:
+    2022-07-01: 0.85
+receiving_spouse_age_limit:
+  description: An application is invalid if the receiving spouse has reached this age, or has reached preservation age and retired.
+  metadata:
+    unit: year
+  values:
+    2022-07-01: 65
