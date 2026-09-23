@@ -1,0 +1,52 @@
+# Franking credits: Income Tax Assessment Act 1997 ss 207-20 and 67-25.
+# A period of N reads parameters at N-01-01, so period 2027 is 2026-27 law.
+# The company rate is 30%, so a fully franked $70 of cash carries $30 of
+# credit. The cash belongs in investment_income; only the credit is added.
+
+- name: 2026-27 a fully franked dividend carries 30/70 of itself in credits
+  period: 2027
+  input:
+    people:
+      person_1:
+        investment_income: 7_000
+        franked_dividend_income: 7_000
+  output:
+    franking_credits: 3_000
+    taxable_income: 10_000  # the cash, grossed up by the credit
+
+- name: 2026-27 an unfranked distribution carries no credit
+  period: 2027
+  input:
+    people:
+      person_1:
+        investment_income: 7_000
+        franked_dividend_income: 0
+  output:
+    franking_credits: 0
+    taxable_income: 7_000
+
+- name: 2026-27 partly franked, modelled by scaling the cash amount
+  period: 2027
+  input:
+    people:
+      person_1:
+        investment_income: 10_000
+        franked_dividend_income: 5_000  # half franked
+  output:
+    franking_credits: 2_142.86
+    taxable_income: 12_142.86
+
+- name: 2026-27 a salary earner pays tax on the grossed-up amount
+  period: 2027
+  input:
+    people:
+      person_1:
+        age: 45
+        employment_income: 60_000
+        investment_income: 7_000
+        franked_dividend_income: 7_000
+  output:
+    taxable_income: 70_000
+    # $4,020 plus 30c over $45,000, less $175 of LITO.
+    income_tax: 11_520
+    income_tax_payable: 11_520

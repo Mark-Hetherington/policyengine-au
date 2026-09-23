@@ -20,9 +20,20 @@ class taxable_income(Variable):
 
         # Age Pension is a taxable payment.
         age_pension = person("age_pension", period)
+        # A franked distribution is assessed with the company tax already
+        # paid on it added back (Income Tax Assessment Act 1997
+        # s 207-20(1)). The cash itself arrives in investment income.
+        franking_credits = person("franking_credits", period)
 
         # Sum all income sources
-        total_income = employment + self_employment + investment + rental + age_pension
+        total_income = (
+            employment
+            + self_employment
+            + investment
+            + rental
+            + age_pension
+            + franking_credits
+        )
 
         # Apply deductions (simplified for now)
         deductions = person("total_deductions", period)

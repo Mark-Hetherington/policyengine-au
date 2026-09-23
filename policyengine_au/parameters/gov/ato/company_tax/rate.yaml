@@ -1,0 +1,9 @@
+description: Company tax rate, which sets the franking credit attached to a franked distribution. Base rate entities pay 25%; that lower rate is not modelled, because listed companies paying franked dividends are generally above the turnover threshold.
+values:
+  2022-07-01: 0.30
+metadata:
+  unit: /1
+  label: Company tax rate
+  reference:
+    - title: Income Tax Rates Act 1986, s 23(2)(b)
+      href: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/pdf

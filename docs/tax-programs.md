@@ -116,6 +116,19 @@ Additional levy for high-income earners without private health insurance:
 
 **Reference**: [Medicare Levy](https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy)
 
+## Franking Credits
+
+A franked distribution is assessed with the company tax already paid on it
+added back, and the recipient gets a tax offset equal to that credit
+(ITAA 1997 s 207-20). The offset is refundable (s 67-25), so a retiree
+with little other income receives the credit as cash.
+
+At the 30% company rate, $70 of franked cash carries $30 of credit.
+Partly franked distributions are modelled by scaling the cash amount
+passed in. The 25% base rate entity rate is not modelled.
+
+**Reference**: [Income Tax Rates Act 1986, s 23](https://www.legislation.gov.au/C2004A03348/latest)
+
 ## Superannuation
 
 ### Contributions (2026-27)
