@@ -1,0 +1,80 @@
+# Division 296 tax on earnings attributable to a large super balance.
+# A period of N reads parameters at N-01-01, so period 2027 is 2026-27 law
+# — the first year the tax applies. 2026-27: large balance threshold
+# $3,000,000, very large balance threshold $10,000,000, rates 15% and a
+# further 10%.
+#
+# The tax is on the *share* of earnings attributable to the balance above
+# a threshold, not on the excess balance itself, so a balance just over a
+# threshold bears the rate on almost none of its earnings.
+
+- name: 2026-27 a balance below the threshold pays nothing
+  period: 2027
+  input:
+    people:
+      person_1:
+        total_super_balance: 2_000_000
+        superannuation_earnings: 100_000
+  output:
+    division_296_tax: 0
+
+- name: 2026-27 a balance exactly at the threshold pays nothing
+  period: 2027
+  input:
+    people:
+      person_1:
+        total_super_balance: 3_000_000
+        superannuation_earnings: 100_000
+  output:
+    division_296_tax: 0
+
+- name: 2026-27 a quarter of the balance is above the threshold
+  period: 2027
+  input:
+    people:
+      person_1:
+        total_super_balance: 4_000_000
+        superannuation_earnings: 200_000
+  output:
+    division_296_tax: 7_500  # 200,000 x 15% x (1,000,000 / 4,000,000)
+
+- name: 2026-27 the very large balance rate stacks on the first
+  period: 2027
+  input:
+    people:
+      person_1:
+        total_super_balance: 12_000_000
+        superannuation_earnings: 600_000
+  output:
+    # 600,000 x 15% x (9/12) = 67,500, plus 600,000 x 10% x (2/12) = 10,000
+    division_296_tax: 77_500
+
+- name: 2026-27 a loss produces no tax rather than a refund
+  period: 2027
+  input:
+    people:
+      person_1:
+        total_super_balance: 4_000_000
+        superannuation_earnings: -50_000
+  output:
+    division_296_tax: 0
+
+- name: 2026-27 a nil balance is not a division by zero
+  period: 2027
+  input:
+    people:
+      person_1:
+        total_super_balance: 0
+        superannuation_earnings: 0
+  output:
+    division_296_tax: 0
+
+- name: 2025-26 the tax does not yet apply
+  period: 2026
+  input:
+    people:
+      person_1:
+        total_super_balance: 5_000_000
+        superannuation_earnings: 300_000
+  output:
+    division_296_tax: 0
