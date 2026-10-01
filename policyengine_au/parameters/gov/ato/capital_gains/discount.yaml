@@ -1,0 +1,37 @@
+description: The capital gains tax discount, which excludes part of a discount capital gain from a resident individual's assessable income.
+metadata:
+  label: Capital gains tax discount
+  reference:
+    - title: Income Tax Assessment Act 1997, s 115-100 (the discount percentage)
+      href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/3
+    - title: Income Tax Assessment Act 1997, s 115-25 (the twelve month rule)
+      href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/3
+    - title: ATO, CGT discount
+      href: https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount
+individual:
+  description: Share of a discount capital gain excluded from assessable income for an individual or a trust.
+  metadata:
+    unit: /1
+    reference:
+      - title: Income Tax Assessment Act 1997, s 115-100(a)(i)
+        href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/3
+  values:
+    2022-07-01: 0.5
+complying_superannuation_entity:
+  description: Share excluded for a complying superannuation entity, being one third rather than one half.
+  metadata:
+    unit: /1
+    reference:
+      - title: Income Tax Assessment Act 1997, s 115-100(b)(i)
+        href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/3
+  values:
+    2022-07-01: 0.3333333333333333
+minimum_holding_months:
+  description: How long an asset must be held before a gain on it is a discount capital gain. The acquisition day itself is excluded, so in practice the asset must be held for twelve months and a day.
+  metadata:
+    unit: month
+    reference:
+      - title: Income Tax Assessment Act 1997, s 115-25(1)
+        href: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/pdf/3
+  values:
+    2022-07-01: 12

@@ -24,6 +24,9 @@ class taxable_income(Variable):
         # paid on it added back (Income Tax Assessment Act 1997
         # s 207-20(1)). The cash itself arrives in investment income.
         franking_credits = person("franking_credits", period)
+        # A net capital gain is assessable income (ITAA 1997 s 102-5),
+        # after the discount on assets held twelve months or more.
+        net_capital_gain = person("net_capital_gain", period)
 
         # Sum all income sources
         total_income = (
@@ -33,6 +36,7 @@ class taxable_income(Variable):
             + rental
             + age_pension
             + franking_credits
+            + net_capital_gain
         )
 
         # Apply deductions (simplified for now)
